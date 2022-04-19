@@ -20,6 +20,12 @@ Resets the service principal for an existing Azure Kubernetes Service Principal,
 
 This follows the [Azure documentation for resetting an existing service principal](https://docs.microsoft.com/en-us/azure/aks/update-credentials#reset-the-existing-service-principal-credential).
 
+**Usage**
+
+```powershell
+Update-ExistingAksServicePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+```
+
 ## Build
 
 A collection of scripts useful when building applications/projects in a continuous integration (CI) environment.
@@ -27,3 +33,10 @@ A collection of scripts useful when building applications/projects in a continuo
 ### [Get-BuildVersion](/build/Get-BuildVersion.psm1)
 
 Gets a semantically versioned build number from a provided string value. This is useful when you want to version your applications based on a Git tag or branch name containing the expected version number. Supports pre-release versions with a `-` format after the version number.
+
+**Usage**
+
+```powershell
+# Gets the build version from the current Git branch name
+Get-BuildVersion -VersionString $Env:GITHUB_REF
+```
