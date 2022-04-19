@@ -14,6 +14,16 @@ The Azure scripts are designed to be used with the Azure CLI to simplify the app
 
 ### Kubernetes
 
+#### [Remove-FailedKubernetesPods.ps1](/azure/kubernetes/Remove-FailedKubernetesPods.psm1)
+
+Removes all failed pods, from all namespaces, within a Kubernetes cluster.
+
+**Usage**
+
+```powershell
+Remove-FailedKubernetesPods
+```
+
 #### [Update-ExistingAksServicePrincipal](/azure/kubernetes/Update-ExistingAksServicePrincipal.psm1)
 
 Resets the service principal for an existing Azure Kubernetes Service Principal, and updates the service principal's permissions to allow access to the cluster.
