@@ -14,7 +14,7 @@ The Azure scripts are designed to be used with the Azure CLI to simplify the app
 
 ### Kubernetes
 
-#### [Remove-FailedKubernetesPods.ps1](/azure/kubernetes/Remove-FailedKubernetesPods.psm1)
+#### [Remove-FailedKubernetesPods](/azure/kubernetes/Remove-FailedKubernetesPods.psm1)
 
 Removes all failed pods, from all namespaces, within a Kubernetes cluster.
 
