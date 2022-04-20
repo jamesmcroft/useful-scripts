@@ -1,9 +1,11 @@
 param (
-    [Parameter]
-    [Switch]$WriteOutput
+    [string] $ModulePath = '',
+    [Switch] $WriteOutput = $false
 )
 
-foreach ($item in (Get-ChildItem -Recurse -Include *.psm1)) {
+Write-Host "Installing Useful Script Modules from $ModulePath..."
+
+foreach ($item in (Get-ChildItem -Path $ModulePath -Recurse -Include *.psm1)) {
     $moduleName = $item.BaseName;
     if (Get-Command $moduleName -errorAction SilentlyContinue) {
         if ($WriteOutput -eq $true) {
@@ -11,7 +13,8 @@ foreach ($item in (Get-ChildItem -Recurse -Include *.psm1)) {
         }
 
         Remove-Module $moduleName
-    } else {
+    }
+    else {
         if ($WriteOutput -eq $true) {
             Write-Host "Importing $moduleName module..."
         }
