@@ -12,7 +12,7 @@ foreach ($item in (Get-ChildItem -Path $ModulePath -Recurse -Include *.psm1)) {
             Write-Host "Updating $moduleName module..."
         }
 
-        Remove-Module $moduleName
+        Remove-Module $moduleName -errorAction SilentlyContinue
     }
     else {
         if ($WriteOutput -eq $true) {
@@ -20,5 +20,5 @@ foreach ($item in (Get-ChildItem -Path $ModulePath -Recurse -Include *.psm1)) {
         }
     }
 
-    Import-Module $item.FullName
+    Import-Module $item.FullName -errorAction SilentlyContinue
 }
