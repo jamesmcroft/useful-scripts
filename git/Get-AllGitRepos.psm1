@@ -5,7 +5,7 @@ Function Get-AllGitRepos {
         $dir = Get-Item (Join-Path $_.FullName "../")
         Push-Location $dir
  
-        "Fetching $($dir.Name)"
+        "Fetching $($dir.Name)..."
 
         git fetch --tags -f
         git fetch -p
