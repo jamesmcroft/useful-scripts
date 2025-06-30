@@ -15,7 +15,15 @@ Function Convert-JSONL2CSV {
     Get-Content -Path $Path | ForEach-Object {
         if ($_ -match '\S') {
             try {
-                $jsonObjects += ($_ | ConvertFrom-Json)
+                $obj = $_ | ConvertFrom-Json
+                # Convert array properties to comma-separated strings
+                foreach ($prop in $obj.PSObject.Properties) {
+                    if ($prop.Value -is [System.Collections.IEnumerable] -and
+                        -not ($prop.Value -is [string])) {
+                        $obj.$($prop.Name) = ($prop.Value -join ',')
+                    }
+                }
+                $jsonObjects += $obj
             }
             catch {
                 Write-Warning "Skipping invalid JSON line: $_"
