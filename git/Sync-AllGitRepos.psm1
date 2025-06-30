@@ -13,3 +13,5 @@ Function Sync-AllGitRepos {
         Pop-Location
     }
 }
+
+New-Alias -Name gitsync -Value Sync-AllGitRepos -Force -Option AllScope

@@ -12,3 +12,5 @@ Function Get-AllGitRepos {
         Pop-Location
     }
 }
+
+New-Alias -Name gitget -Value Get-AllGitRepos -Force -Option AllScope

@@ -21,3 +21,5 @@ Function Merge-WithGitBranch {
 Function Merge-WithGitMain {
     Merge-WithGitBranch "main"
 }
+
+New-Alias -Name gitupdate -Value Merge-WithGitMain -Force -Option AllScope
