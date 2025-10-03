@@ -4,14 +4,15 @@ Just a collection of really useful scripts that I use on a regular basis, mainly
 
 ## Table of Contents
 
-- [James' Really Useful Scripts](#james-really-useful-scripts)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [About the Scripts](#about-the-scripts)
-  - [Installing PowerShell Modules](#installing-powershell-modules)
-  - [Contributing](#contributing)
-    - [Support \& Reuse Expectations](#support--reuse-expectations)
-  - [License](#license)
+- [Table of Contents](#table-of-contents)
+- [Overview](#overview)
+- [About the Scripts](#about-the-scripts)
+- [Installing PowerShell Modules](#installing-powershell-modules)
+  - [Option 1: Temporary (from a cloned repo)](#option-1-temporary-from-a-cloned-repo)
+  - [Option 2: Global / Autoload (recommended)](#option-2-global--autoload-recommended)
+- [Contributing](#contributing)
+  - [Support \& Reuse Expectations](#support--reuse-expectations)
+- [License](#license)
 
 ---
 
@@ -34,16 +35,43 @@ Please use the list below to find more details about each of the scripts availab
 
 ## Installing PowerShell Modules
 
-To install all the modules in this repository, run the following command in PowerShell:
+Instead of manually importing each script, you can now use the meta module `UsefulScripts` which automatically aggregates all functions in this repository.
+
+### Option 1: Temporary (from a cloned repo)
 
 ```powershell
-Add-UsefulScriptModules.ps1
+Import-Module <path-to-clone>\UsefulScripts\UsefulScripts.psm1 -Force
 ```
 
-This command will automatically install all the PowerShell modules found in this repository, making them available for use in your PowerShell environment.
+### Option 2: Global / Autoload (recommended)
+
+Copy or symlink the `UsefulScripts` folder (the folder that contains `UsefulScripts.psm1`) into a location on `$env:PSModulePath`, e.g.:
+
+Windows PowerShell / PowerShell (Windows):
+
+```powershell
+$target = "$HOME/OneDrive/Documents/PowerShell/Modules/UsefulScripts"
+# or: "$HOME/Documents/PowerShell/Modules/UsefulScripts"
+Copy-Item -Recurse <path-to-clone>\UsefulScripts $target
+```
+
+macOS / Linux:
+
+```powershell
+$target = "$HOME/.local/share/powershell/Modules/UsefulScripts"
+Copy-Item -Recurse <path-to-clone>/UsefulScripts $target
+```
+
+Once placed, any call to an exported function (e.g. `Set-AzureSubscription`, `Get-BuildVersion`, `Reset-Docker`) will automatically autoload the module.
+
+You can list the imported functions with:
+
+```powershell
+Get-UsefulScriptInfo | Format-List
+```
 
 > [!NOTE]
-> You can also run `Remove-UsefulScriptModules.ps1` to remove all Useful Script modules.
+> Legacy scripts `Add-UsefulScriptModules.ps1` and `Remove-UsefulScriptModules.ps1` are kept for backward compatibility but no longer required.
 
 ## Contributing
 
