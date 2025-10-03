@@ -14,4 +14,6 @@ Function New-PythonEnvironment {
     }
 }
 
-New-Alias -Name pyenv -Value New-PythonEnvironment -Force -Option AllScope
+New-Alias -Name pyenv -Value New-PythonEnvironment -Force
+
+Export-ModuleMember -Function * -Alias *

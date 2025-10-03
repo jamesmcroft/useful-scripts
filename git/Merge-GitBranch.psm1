@@ -3,6 +3,10 @@ Function Merge-WithGitBranch {
         [string]$Branch
     )
 
+    if ([string]::IsNullOrWhiteSpace($Branch)) {
+        throw "Branch name is required"
+    }
+
     Get-AllGitRepos
     $currentBranch = git rev-parse --abbrev-ref HEAD
 
@@ -19,7 +23,9 @@ Function Merge-WithGitBranch {
 }
 
 Function Merge-WithGitMain {
-    Merge-WithGitBranch "main"
+    Merge-GitBranch -Branch "main"
 }
 
-New-Alias -Name gitupdate -Value Merge-WithGitMain -Force -Option AllScope
+New-Alias -Name gitupdate -Value Merge-WithGitMain -Force
+
+Export-ModuleMember -Function * -Alias *

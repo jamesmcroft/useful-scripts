@@ -14,4 +14,6 @@ Function Sync-AllGitRepos {
     }
 }
 
-New-Alias -Name gitsync -Value Sync-AllGitRepos -Force -Option AllScope
+New-Alias -Name gitsync -Value Sync-AllGitRepos -Force
+
+Export-ModuleMember -Function * -Alias *

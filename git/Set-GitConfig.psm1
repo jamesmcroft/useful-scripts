@@ -33,3 +33,5 @@ Function Set-GitConfig {
         git config user.email $GitConfig.email
     }
 }
+
+Export-ModuleMember -Function *

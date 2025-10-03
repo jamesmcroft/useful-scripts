@@ -26,4 +26,6 @@ Function Reset-Docker {
     Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 }
 
-New-Alias -Name resetdocker -Value Reset-Docker -Force -Option AllScope
+New-Alias -Name resetdocker -Value Reset-Docker -Force
+
+Export-ModuleMember -Function * -Alias *

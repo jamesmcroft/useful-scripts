@@ -43,3 +43,5 @@ Function Convert-JSONL2CSV {
         $jsonObjects | ConvertTo-Csv -NoTypeInformation | Select-Object -Skip 1
     }
 }
+
+Export-ModuleMember -Function *

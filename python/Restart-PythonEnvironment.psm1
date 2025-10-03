@@ -9,4 +9,6 @@ Function Restart-PythonEnvironment {
     }
 }
 
-New-Alias -Name pyrestart -Value Restart-PythonEnvironment -Force -Option AllScope
+New-Alias -Name pyrestart -Value Restart-PythonEnvironment -Force
+
+Export-ModuleMember -Function * -Alias *

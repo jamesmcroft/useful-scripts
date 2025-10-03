@@ -9,13 +9,14 @@ Function New-GitBranch {
     }
     else {
         Get-AllGitRepos
-        
+        $currentBranch = git rev-parse --abbrev-ref HEAD
         if ($currentBranch -ne $MainBranch) {
             git checkout $MainBranch
         }
-
         git pull
-        git checkout -b $branchName
-        git push -u origin $branchName
+        git checkout -b $Branch
+        git push -u origin $Branch
     }
 }
+
+Export-ModuleMember -Function *

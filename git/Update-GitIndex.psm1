@@ -21,3 +21,5 @@ Function Update-GitIndex {
         git add .
     }
 }
+
+Export-ModuleMember -Function *

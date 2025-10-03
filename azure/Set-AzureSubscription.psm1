@@ -24,3 +24,5 @@ Function Set-AzureSubscription {
     Write-Host Setting subscription to $AzureConfig.subscription
     az account set --subscription $AzureConfig.subscription
 }
+
+Export-ModuleMember -Function *

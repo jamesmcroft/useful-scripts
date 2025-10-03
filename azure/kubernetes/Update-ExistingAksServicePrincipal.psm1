@@ -18,3 +18,5 @@ Function Update-ExistingAksServicePrincipal {
         Write-Host "The Azure CLI is not installed. Please install the Azure CLI (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) and try again."
     }    
 }
+
+Export-ModuleMember -Function *

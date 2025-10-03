@@ -7,3 +7,5 @@ Function Remove-FailedKubernetesPods {
         Write-Host "The kubectl CLI is not installed. Please install the kubectl CLI (https://kubernetes.io/docs/tasks/tools/#kubectl) and try again."
     }    
 }
+
+Export-ModuleMember -Function *

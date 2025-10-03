@@ -13,4 +13,6 @@ Function Get-AllGitRepos {
     }
 }
 
-New-Alias -Name gitget -Value Get-AllGitRepos -Force -Option AllScope
+New-Alias -Name gitget -Value Get-AllGitRepos -Force
+
+Export-ModuleMember -Function * -Alias *

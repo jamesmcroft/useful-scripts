@@ -32,3 +32,5 @@ Function Get-BuildVersion {
 
     return $Version
 }
+
+Export-ModuleMember -Function *

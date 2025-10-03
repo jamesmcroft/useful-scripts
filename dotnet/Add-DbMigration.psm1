@@ -27,3 +27,5 @@ Function Add-DbMigration {
         }
     }
 }
+
+Export-ModuleMember -Function *
