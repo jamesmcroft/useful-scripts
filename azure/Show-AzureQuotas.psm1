@@ -6,17 +6,28 @@ Function Show-AzureQuotas {
         [Parameter(Mandatory = $true)]
         [string[]]$Locations,
         [Parameter(Mandatory = $true)]
-        [ValidateSet('Compute', 'MachineLearning', 'ContainerApps', 'Networking', 'Storage', 'Web')]
+        [ValidateSet('AzureContainerApps', 'AutomationAccounts', 'AzureVMwareSolution', 'Compute', 'AzureContainerInstances', 'AzureKubernetesService', 'AzurePostgreSQL', 'DevBox', 'ManagedDevOpsPools', 'MicrosoftFabric', 'AzureHDInsight', 'AzureLabServices', 'MachineLearning', 'Networking', 'Search', 'Storage', 'Web')]
         [string]$Type
     )
 
     $scopes = @{
-        'Compute'         = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Compute/locations/$location" }
-        'MachineLearning' = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.MachineLearningServices/locations/$location" }
-        'ContainerApps'   = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.App/locations/$location" }
-        'Networking'      = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Network/locations/$location" }
-        'Storage'         = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Storage/locations/$location" }
-        'Web'             = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Web/locations/$location" }
+        'AzureContainerApps'      = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.App/locations/$location" }
+        'AutomationAccounts'      = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Automation/locations/$location" }
+        'AzureVMwareSolution'     = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.AVS/locations/$location" }
+        'Compute'                 = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Compute/locations/$location" }
+        'AzureContainerInstances' = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.ContainerInstance/locations/$location" }
+        'AzureKubernetesService'  = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.ContainerService/locations/$location" }
+        'AzurePostgreSQL'         = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.DBforPostgreSQL/locations/$location" }
+        'DevBox'                  = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.DevCenter/locations/$location" }
+        'ManagedDevOpsPools'      = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.DevOpsInfrastructure/locations/$location" }
+        'MicrosoftFabric'         = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Fabric/locations/$location" }
+        'AzureHDInsight'          = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.HDInsight/locations/$location" }
+        'AzureLabServices'        = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.LabServices/locations/$location" }
+        'MachineLearning'         = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.MachineLearningServices/locations/$location" }
+        'Networking'              = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Network/locations/$location" }
+        'Search'                  = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Search/locations/$location" }
+        'Storage'                 = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Storage/locations/$location" }
+        'Web'                     = { param($subscriptionId, $location) "/subscriptions/$subscriptionId/providers/Microsoft.Web/locations/$location" }
     }
 
     $quotaExtension = az extension list --query "[?name=='quota']" -o json | ConvertFrom-Json
@@ -59,6 +70,4 @@ Function Show-AzureQuotas {
         } 
     }, 
     @{Label = "Quota"; Expression = { $_.properties.limit.value } }
-
-    return $allQuotas
 }
