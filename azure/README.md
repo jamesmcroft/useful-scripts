@@ -25,6 +25,94 @@ Sets the current Azure subscription context.
 Set-AzureSubscription -AzureConfig @{ subscription = '00000000-0000-0000-0000-000000000000' }
 ```
 
+### [Register-AzureCoreProviders](./Register-AzureCoreProviders.psm1)
+
+Registers the core Azure resource providers required for most Azure services. This is useful when setting up a new Azure subscription or when certain resource providers are not registered.
+
+If no core providers are provided, the following will be registered by default:
+
+```markdown
+# Management Resource Providers
+
+"Microsoft.Advisor",
+"Microsoft.CustomProviders",
+"Microsoft.GuestConfiguration",
+"Microsoft.ManagedServices",
+"Microsoft.Management",
+"Microsoft.PolicyInsights",
+"Microsoft.Quota",
+"Microsoft.RecoveryServices",
+"Microsoft.ResourceHealth",
+"Microsoft.ResourceNotifications",
+"Microsoft.SaaS",
+"Microsoft.SaaSHub",
+"Microsoft.ServiceLinker",
+
+# Identity Resource Providers
+
+"Microsoft.ManagedIdentity",
+
+# Monitoring Resource Providers
+
+"Microsoft.AlertsManagement",
+"Microsoft.ChangeAnalysis",
+"Microsoft.Insights",
+"Microsoft.Monitor",
+"Microsoft.OperationalInsights",
+"Microsoft.OperationsManagement",
+
+# Security Resource Providers
+
+"Microsoft.DataProtection",
+"Microsoft.KeyVault",
+"Microsoft.Security",
+"Microsoft.SecurityCopilot",
+"Microsoft.SecurityInsights",
+
+# Networking Resource Providers
+
+"Microsoft.Cdn",
+"Microsoft.Network",
+
+# Integration Resource Providers
+
+"Microsoft.ApiManagement",
+"Microsoft.EventGrid",
+"Microsoft.EventHub",
+"Microsoft.ServiceBus",
+
+# Compute/Container Resource Providers
+
+"Microsoft.App",
+"Microsoft.Compute",
+"Microsoft.ContainerRegistry",
+"Microsoft.ContainerService",
+"Microsoft.DesktopVirtualization",
+"Microsoft.Maintenance",
+"Microsoft.Web",
+
+# AI/ML Resource Providers
+
+"Microsoft.CognitiveServices",
+"Microsoft.MachineLearningServices",
+"Microsoft.Search",
+
+# Data Resource Providers
+
+"Microsoft.DocumentDB",
+"Microsoft.Sql",
+"Microsoft.Storage",
+
+# Developer Tools Resource Providers
+
+"Microsoft.AppConfiguration",
+"Microsoft.CloudShell"
+```
+
+```powershell
+Register-AzureCoreProviders -CoreProviders @("Microsoft.Compute", "Microsoft.Network", "Microsoft.Storage")
+```
+
 ### [Show-AzureQuotas](./Show-AzureQuotas.psm1)
 
 Shows the current Azure quotas for a given subscription, location, and resource type. The output will be a table showing the current usage and limits for each quota family.
