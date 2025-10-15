@@ -4,15 +4,14 @@ A collection of scripts useful when working with Git repositories.
 
 ## Table of Contents
 
-- [James's Really Useful Git Scripts](#jamess-really-useful-git-scripts)
-  - [Table of Contents](#table-of-contents)
-  - [Get-AllGitRepos](#get-allgitrepos)
-  - [Sync-AllGitRepos](#sync-allgitrepos)
-  - [Update-GitIndex](#update-gitindex)
-  - [New-GitBranch](#new-gitbranch)
-  - [Merge-GitBranch](#merge-gitbranch)
-  - [Merge-WithGitMain](#merge-withgitmain)
-  - [Undo-GitCommit](#undo-gitcommit)
+- [Table of Contents](#table-of-contents)
+- [Get-AllGitRepos](#get-allgitrepos)
+- [Sync-AllGitRepos](#sync-allgitrepos)
+- [Update-GitIndex](#update-gitindex)
+- [New-GitBranch](#new-gitbranch)
+- [Merge-GitBranch](#merge-gitbranch)
+- [Merge-WithGitMain](#merge-withgitmain)
+- [Undo-GitCommit](#undo-gitcommit)
 
 ---
 

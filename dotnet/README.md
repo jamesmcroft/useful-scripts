@@ -4,10 +4,9 @@ A collection of scripts useful when working with .NET projects and applications.
 
 ## Table of Contents
 
-- [James's Really Useful .NET Scripts](#jamess-really-useful-net-scripts)
-  - [Table of Contents](#table-of-contents)
-  - [Entity Framework](#entity-framework)
-    - [Add-DbMigration](#add-dbmigration)
+- [Table of Contents](#table-of-contents)
+- [Entity Framework](#entity-framework)
+  - [Add-DbMigration](#add-dbmigration)
 
 ---
 

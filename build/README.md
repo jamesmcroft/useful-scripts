@@ -4,10 +4,9 @@ A collection of scripts useful when building applications/projects in a continuo
 
 ## Table of Contents
 
-- [James's Really Useful Build Scripts](#jamess-really-useful-build-scripts)
-  - [Table of Contents](#table-of-contents)
-  - [Versioning](#versioning)
-    - [Get-BuildVersion](#get-buildversion)
+- [Table of Contents](#table-of-contents)
+- [Versioning](#versioning)
+  - [Get-BuildVersion](#get-buildversion)
 
 ---
 

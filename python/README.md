@@ -4,10 +4,9 @@ A collection of scripts useful when working with Python projects and application
 
 ## Table of Contents
 
-- [James's Really Useful Python Scripts](#jamess-really-useful-python-scripts)
-  - [Table of Contents](#table-of-contents)
-  - [New-PythonEnvironment](#new-pythonenvironment)
-  - [Restart-PythonEnvironment](#restart-pythonenvironment)
+- [Table of Contents](#table-of-contents)
+- [New-PythonEnvironment](#new-pythonenvironment)
+- [Restart-PythonEnvironment](#restart-pythonenvironment)
 
 ---
 

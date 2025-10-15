@@ -4,9 +4,8 @@ A collection of scripts useful when manipulating JSON data in PowerShell.
 
 ## Table of Contents
 
-- [James's Really Useful JSON Scripts](#jamess-really-useful-json-scripts)
-  - [Table of Contents](#table-of-contents)
-  - [Convert-JSONL2CSV](#convert-jsonl2csv)
+- [Table of Contents](#table-of-contents)
+- [Convert-JSONL2CSV](#convert-jsonl2csv)
 
 ---
 
