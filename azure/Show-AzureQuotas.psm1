@@ -37,6 +37,9 @@ Function Show-AzureQuotas {
         az extension add --upgrade -n quota
     }
 
+    # Ensure commands target the requested subscription
+    az account set --subscription $SubscriptionId
+
     $allQuotas = @()
 
     Write-Host "Fetching $Type quotas for subscription $SubscriptionId..."

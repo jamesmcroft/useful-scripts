@@ -68,6 +68,9 @@ Function Register-AzureCoreProviders {
         )
     }
 
+    # Ensure commands target the requested subscription
+    az account set --subscription $SubscriptionId
+
     # Loop through each namespace and register
     $CoreProviders | ForEach-Object -Parallel {
         # Check if the provider is already registered

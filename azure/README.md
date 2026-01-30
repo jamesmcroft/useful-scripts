@@ -7,6 +7,7 @@ The Azure scripts are designed to be used with the Azure CLI to simplify the app
 - [Table of Contents](#table-of-contents)
 - [General](#general)
   - [Set-AzureSubscription](#set-azuresubscription)
+  - [Register-AzureCoreProviders](#register-azurecoreproviders)
   - [Show-AzureQuotas](#show-azurequotas)
   - [Resize-AzureQuotas](#resize-azurequotas)
 - [Kubernetes](#kubernetes)

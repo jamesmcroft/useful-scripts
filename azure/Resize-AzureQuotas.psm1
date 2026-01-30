@@ -41,6 +41,9 @@ Function Resize-AzureQuotas {
         az extension add --upgrade -n quota
     }
 
+    # Ensure commands target the requested subscription
+    az account set --subscription $SubscriptionId
+
     Write-Host "Requesting $Type quota increases for subscription $SubscriptionId..."
 
     # Loop through each location to request the quota increase
@@ -70,7 +73,7 @@ Function Resize-AzureQuotas {
         }
         elseif ($existingQuotaLimit -lt $Quota) {
             Write-Host "The current quota limit is $existingQuotaLimit for $family in scope $scope. Requesting an increase to $quota..." -ForegroundColor Yellow
-            az quota update --resource-name $family --scope $scope --limit-object value=$quota --no-wait y
+            az quota update --resource-name $family --scope $scope --limit-object value=$quota --no-wait
         }
         else {
             Write-Host "The current quota limit is $existingQuotaLimit for $family in scope $scope. Skipping." -ForegroundColor Yellow
