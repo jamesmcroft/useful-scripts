@@ -1,4 +1,4 @@
-Function Merge-WithGitBranch {
+Function Merge-GitBranch {
     Param (
         [string]$Branch
     )
@@ -22,10 +22,9 @@ Function Merge-WithGitBranch {
     }
 }
 
-Function Merge-WithGitMain {
+Function Merge-GitMain {
     Merge-GitBranch -Branch "main"
 }
 
-New-Alias -Name gitupdate -Value Merge-WithGitMain -Force
-
+New-Alias -Name gitupdate -Value Merge-GitMain -Force
 Export-ModuleMember -Function * -Alias *
