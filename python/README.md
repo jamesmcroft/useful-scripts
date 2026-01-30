@@ -7,6 +7,8 @@ A collection of scripts useful when working with Python projects and application
 - [Table of Contents](#table-of-contents)
 - [New-PythonEnvironment](#new-pythonenvironment)
 - [Restart-PythonEnvironment](#restart-pythonenvironment)
+- [Find-PythonDependencyIssues](#find-pythondependencyissues)
+- [Update-PythonEnvironmentPackages](#update-pythonenvironmentpackages)
 
 ---
 
@@ -39,4 +41,32 @@ Alternatively, you can use the alias `pyrestart`:
 
 ```powershell
 pyrestart
+```
+
+## [Find-PythonDependencyIssues](./Find-PythonDependencyIssues.psm1)
+
+Checks the active environment for dependency conflicts and lists outdated packages so you can keep the project healthy.
+
+```powershell
+Find-PythonDependencyIssues
+```
+
+Alternatively, you can use the alias `pydeps`:
+
+```powershell
+pydeps
+```
+
+## [Update-PythonEnvironmentPackages](./Update-PythonEnvironmentPackages.psm1)
+
+Installs dependencies from `requirements.txt` and optionally removes packages not declared there, keeping the environment aligned with the lock file.
+
+```powershell
+Update-PythonEnvironmentPackages -RemoveExtras
+```
+
+Alternatively, you can use the alias `pyreconcile`:
+
+```powershell
+pyreconcile -RemoveExtras
 ```
