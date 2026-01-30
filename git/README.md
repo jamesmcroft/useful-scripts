@@ -10,8 +10,9 @@ A collection of scripts useful when working with Git repositories.
 - [Update-GitIndex](#update-gitindex)
 - [New-GitBranch](#new-gitbranch)
 - [Merge-GitBranch](#merge-gitbranch)
-- [Merge-WithGitMain](#merge-withgitmain)
+- [Merge-GitMain](#merge-gitmain)
 - [Undo-GitCommit](#undo-gitcommit)
+- [Remove-GitBranches](#remove-gitbranches)
 
 ---
 
@@ -67,12 +68,12 @@ Merges the specified branch into the current branch. This script simplifies the 
 Merge-GitBranch -Branch "feature-branch"
 ```
 
-## [Merge-WithGitMain](./Merge-WithGitMain.psm1)
+## [Merge-GitMain](./Merge-GitBranch.psm1)
 
 Merges the current branch with the `main` branch. This script is useful for keeping your feature branches up-to-date with the latest changes from the main branch.
 
 ```powershell
-Merge-WithGitMain
+Merge-GitMain
 ```
 
 Alternatively, you can use the alias `gitupdate`:
@@ -96,4 +97,18 @@ Alternatively, you can use the alias `gitundo`:
 
 ```powershell
 gitundo
+```
+
+## [Remove-GitBranches](./Remove-GitBranches.psm1)
+
+Prunes local branches that have already been merged into your base branch (defaults to `main`), skipping protected branches and the one you are currently on.
+
+```powershell
+Remove-GitBranches
+```
+
+Alternatively, you can use the alias `gitprune`:
+
+```powershell
+gitprune
 ```
