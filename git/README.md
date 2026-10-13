@@ -9,6 +9,7 @@ A collection of scripts useful when working with Git repositories.
 - [Sync-AllGitRepos](#sync-allgitrepos)
 - [Update-GitIndex](#update-gitindex)
 - [New-GitBranch](#new-gitbranch)
+- [New-GitWorktree](#new-gitworktree)
 - [Merge-GitBranch](#merge-gitbranch)
 - [Merge-GitMain](#merge-gitmain)
 - [Undo-GitCommit](#undo-gitcommit)
@@ -60,6 +61,40 @@ Creates a new Git branch based on the main branch. This script simplifies the pr
 New-GitBranch -Branch "feature/new-feature"
 ```
 
+## [New-GitWorktree](./New-GitWorktree.psm1)
+
+Creates a new local branch and worktree from the latest `main` on `origin`, fetching it first. Run it anywhere inside a repository, or specify the repository with `-Path`:
+
+```powershell
+New-GitWorktree -Branch "u/jamescroft/refactor-this-thing" -Path "C:\src\new-project"
+```
+
+For this example, the worktree is created at `C:\src\new-project-worktrees\u-jamescroft-refactor-this-thing`. Worktrees always sit in a sibling `<repo>-worktrees` directory, with `/` in branch names replaced by `-`. Running the command from an existing linked worktree still uses the original repository's sibling directory.
+
+Alternatively, use the alias `gitworktree` from inside the repository:
+
+```powershell
+gitworktree "u/jamescroft/refactor-this-thing"
+```
+
+Use `-MainBranch` and `-Remote` when the base branch or remote differs:
+
+```powershell
+New-GitWorktree -Branch "feature/new-feature" -MainBranch "master" -Remote "upstream"
+```
+
+The command returns the absolute worktree path. Your current location, branch, local `main`, and uncommitted changes remain unchanged. To enter the worktree immediately:
+
+```powershell
+Set-Location (gitworktree "u/jamescroft/refactor-this-thing")
+```
+
+For safety, existing local branches and destination paths are rejected rather than reused or overwritten, including collisions between branch names such as `feature/example` and `feature-example`. Invalid branch names and folder names are rejected. A failed fetch stops creation instead of using a stale local branch. Git arguments are passed directly, not evaluated as shell commands. Nothing is pushed, and the new branch does not track the base branch; publish it explicitly when ready:
+
+```powershell
+git push -u origin HEAD
+```
+
 ## [Merge-GitBranch](./Merge-GitBranch.psm1)
 
 Merges the specified branch into the current branch. This script simplifies the process of merging branches by allowing you to specify the branch name and whether to perform a fast-forward merge.
@@ -86,8 +121,7 @@ gitupdate
 
 Performs a hard reset to the previous commit, effectively undoing the last commit. This script is useful when you need to quickly revert a commit without affecting the working directory.
 
-> [!WARNING]
-> This will discard all changes made in the last commit, so use it with caution.
+> [!WARNING] This will discard all changes made in the last commit, so use it with caution.
 
 ```powershell
 Undo-GitCommit
